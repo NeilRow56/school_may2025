@@ -1,4 +1,5 @@
 import { Menu } from '@/components/menu'
+import { Navbar } from '@/components/navbar'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -10,7 +11,7 @@ export default function DashboardLayout({
   return (
     <div className='flex h-screen'>
       {/* Left */}
-      <div className='w-[14%] bg-blue-50 md:w-[8%] lg:w-[16%]'>
+      <div className='w-[14%] md:w-[8%] lg:w-[18%]'>
         <Link
           className='flex w-full items-center justify-center gap-2 p-4 lg:justify-start'
           href='/'
@@ -21,8 +22,10 @@ export default function DashboardLayout({
         <Menu />
       </div>
       {/* Right */}
-      <div className='lg:[w-84%] w-[86%] bg-green-50 md:w-[92%]'>Right</div>
-      {children}
+      <div className='lg:[w-82%] w-[86%] overflow-scroll bg-[#F7F8FA] md:w-[92%]'>
+        <Navbar />
+        {children}
+      </div>
     </div>
   )
 }
