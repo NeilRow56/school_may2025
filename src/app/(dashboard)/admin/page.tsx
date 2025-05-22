@@ -1,9 +1,17 @@
+import { UserCard } from '@/components/shared/user-card'
+
 const AdminPage = () => {
   return (
     <div className='flex flex-col gap-4 p-4 md:flex-row'>
       {/* LEFT */}
       <div className='flex w-full flex-col gap-8 bg-yellow-50 lg:w-2/3'>
         {/* USER CARDS */}
+        <div className='flex flex-wrap justify-between gap-4'>
+          <UserCard label='student' />
+          <UserCard label='teacher' />
+          <UserCard label='parent' />
+          <UserCard label='staff' />
+        </div>
         <div className='flex flex-wrap justify-between gap-4'>USER CARDS</div>
         {/* MIDDLE CHARTS */}
         <div className='flex flex-col gap-4 lg:flex-row'>

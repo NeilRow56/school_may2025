@@ -1,7 +1,16 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
+
+@theme {
+  --color-lamaSky: oklch(0.9164 0.0463 222.59);
+  --color-lamaSkyLight: oklch(0.9743 0.0138 219.62);
+  --color-lamaPurple: oklch(0.8683 0.0675 285.84);
+  --color-lamaPurpleLight: oklch(0.9603 0.02 289.08);
+  --color-lamaYellow: oklch(0.9118 0.1253 96.42);
+  --color-lamaYellowLight: oklch(0.9873 0.0262 102.21);
+}
 
 @theme inline {
   --color-background: var(--background);
