@@ -4,6 +4,8 @@ import { role, teachersData } from '@/lib/data'
 import TeachersTable from '@/modules/teachers/components/teachers-table'
 import { PlusIcon } from 'lucide-react'
 
+const total = 25
+
 const TeacherListPage = () => {
   return (
     <div className='m-4 mt-0 flex-1 rounded-md bg-white p-4'>
@@ -24,7 +26,7 @@ const TeacherListPage = () => {
       </div>
       {/* LIST */}
       {/* <TeachersTable data={ teachersData } /> */}
-      <TeachersTable data={teachersData} />
+      <TeachersTable data={teachersData} total={total} />
     </div>
   )
 }
