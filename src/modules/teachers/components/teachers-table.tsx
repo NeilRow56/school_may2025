@@ -5,8 +5,15 @@ import { Teacher, columns } from './columns'
 
 type TeachTableProps = {
   data: {
+    id: number
     teacherId: string
     name: string
+    email?: string
+    phone: string
+    subjects: string[]
+    classes: string[]
+    isActive: boolean
+    address: string
   }[]
   total: number
 }

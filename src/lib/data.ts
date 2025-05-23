@@ -13,6 +13,7 @@ export const teachersData = [
     phone: '1234567890',
     subjects: ['Math', 'Geometry'],
     classes: ['1B', '2A', '3C'],
+    isActive: true,
     address: '123 Main St, Anytown, USA'
   },
   {
@@ -25,6 +26,7 @@ export const teachersData = [
     phone: '1234567890',
     subjects: ['Physics', 'Chemistry'],
     classes: ['5A', '4B', '3C'],
+    isActive: true,
     address: '123 Main St, Anytown, USA'
   },
   {
@@ -37,6 +39,7 @@ export const teachersData = [
     phone: '1234567890',
     subjects: ['Biology'],
     classes: ['5A', '4B', '3C'],
+    isActive: true,
     address: '123 Main St, Anytown, USA'
   },
   {
@@ -49,6 +52,7 @@ export const teachersData = [
     phone: '1234567890',
     subjects: ['History'],
     classes: ['5A', '4B', '3C'],
+    isActive: true,
     address: '123 Main St, Anytown, USA'
   },
   {
@@ -61,6 +65,7 @@ export const teachersData = [
     phone: '1234567890',
     subjects: ['Music', 'History'],
     classes: ['5A', '4B', '3C'],
+    isActive: true,
     address: '123 Main St, Anytown, USA'
   },
   {
@@ -73,6 +78,7 @@ export const teachersData = [
     phone: '1234567890',
     subjects: ['Physics'],
     classes: ['5A', '4B', '3C'],
+    isActive: false,
     address: '123 Main St, Anytown, USA'
   },
   {
@@ -85,6 +91,7 @@ export const teachersData = [
     phone: '1234567890',
     subjects: ['English', 'Spanish'],
     classes: ['5A', '4B', '3C'],
+    isActive: true,
     address: '123 Main St, Anytown, USA'
   },
   {
@@ -97,6 +104,7 @@ export const teachersData = [
     phone: '1234567890',
     subjects: ['Math', 'Geometry'],
     classes: ['5A', '4B', '3C'],
+    isActive: false,
     address: '123 Main St, Anytown, USA'
   },
   {
@@ -109,6 +117,7 @@ export const teachersData = [
     phone: '1234567890',
     subjects: ['Literature', 'English'],
     classes: ['5A', '4B', '3C'],
+    isActive: true,
     address: '123 Main St, Anytown, USA'
   },
   {
@@ -121,6 +130,7 @@ export const teachersData = [
     phone: '1234567890',
     subjects: ['Biology'],
     classes: ['5A', '4B', '3C'],
+    isActive: true,
     address: '123 Main St, Anytown, USA'
   }
 ]
