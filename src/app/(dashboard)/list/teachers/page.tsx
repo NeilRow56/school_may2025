@@ -12,12 +12,6 @@ const TeacherListPage = () => {
         <div className='flex w-full flex-col items-center gap-4 md:w-auto md:flex-row'>
           <TableSearch />
           <div className='mb-4 flex items-center gap-4 self-end'>
-            {/* <Button className='bg-lamaYellow flex h-8 w-8 items-center justify-center rounded-full text-gray-900'>
-              <FilterIcon width={14} height={14} />
-            </Button>
-            <Button className='bg-lamaYellow flex h-8 w-8 items-center justify-center rounded-full text-gray-900'>
-              <ArrowUpDownIcon width={14} height={14} />
-            </Button> */}
             {role === 'admin' && (
               <div className='mt-4'>
                 <Button className='bg-lamaYellow flex h-8 w-8 justify-center rounded-full text-gray-900'>
@@ -31,9 +25,6 @@ const TeacherListPage = () => {
       {/* LIST */}
       {/* <TeachersTable data={ teachersData } /> */}
       <TeachersTable data={teachersData} />
-
-      {/* Pagination */}
-      <div>PAGINATION</div>
     </div>
   )
 }
