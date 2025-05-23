@@ -1,8 +1,9 @@
 import { createRowActions } from '@/components/data-table-components/data-table-actions'
 import DataTableColumnHeader from '@/components/data-table-components/data-table-column-header'
+// import MoneyWithCurrency from '@/components/shared/money-with-currency'
 import { cn } from '@/lib/utils'
 import { ColumnDef } from '@tanstack/react-table'
-import { Check, CircleOff } from 'lucide-react'
+import { Check, CircleOff, TrendingDown, TrendingUp } from 'lucide-react'
 
 export type Teacher = {
   id: number
@@ -10,6 +11,7 @@ export type Teacher = {
   name: string
   email?: string
   phone: string
+
   subjects: string[]
   classes: string[]
   isActive?: boolean
@@ -26,19 +28,24 @@ export const columns: ColumnDef<Teacher>[] = [
         className='justify-start pl-2 text-orange-400'
       />
     ),
+
     cell: ({ row }) => (
       <div className={cn('rounded-lg bg-green-100 p-2 text-center capitalize')}>
         {row.original.id}
       </div>
-    )
+    ),
+    footer: props => {
+      const totalBalance = props.table
+        .getRowModel()
+        .rows.reduce((sum, idRow) => sum + idRow.original.id, 0)
 
-    // footer: props => {
-    //   const totalBalance = props.table.getRowModel()
-
-    //   console.log(totalBalance)
-
-    //   return <div className='pr-2 text-right font-semibold'></div>
-    // }
+      return (
+        <div className='border-2 border-orange-400 p-2 text-center'>
+          {/* <MoneyWithCurrency amount={totalBalance} /> */}
+          ID total {totalBalance}
+        </div>
+      )
+    }
   },
   {
     accessorKey: 'teacherId',
@@ -69,6 +76,32 @@ export const columns: ColumnDef<Teacher>[] = [
         className='justify-start pl-2 text-orange-400'
       />
     )
+  },
+  {
+    accessorKey: 'type',
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title='Type'
+        className='justify-start pl-2 text-orange-400'
+      />
+    ),
+    cell: ({ row }) => {
+      const type = row.getValue('type')
+      return (
+        <div className='justify-center-center flex w-[100px] items-center'>
+          {type === 'income' ? (
+            <TrendingUp size={20} className='mr-2 text-green-500' />
+          ) : (
+            <TrendingDown size={20} className='mr-2 text-red-500' />
+          )}
+          <span className='capitalize'> {row.getValue('type')}</span>
+        </div>
+      )
+    },
+    filterFn: (row, id, value) => {
+      return value.includes(row.getValue(id))
+    }
   },
   {
     accessorKey: 'subjects',
@@ -114,7 +147,7 @@ export const columns: ColumnDef<Teacher>[] = [
   },
   {
     accessorKey: 'isActive',
-    enableSorting: false,
+    enableSorting: true,
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
