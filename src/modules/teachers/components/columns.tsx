@@ -48,6 +48,16 @@ export const columns: ColumnDef<Teacher>[] = [
     }
   },
   {
+    accessorKey: 'info',
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title='Info'
+        className='justify-start pl-2 text-orange-400'
+      />
+    )
+  },
+  {
     accessorKey: 'teacherId',
     header: ({ column }) => (
       <DataTableColumnHeader
@@ -83,13 +93,13 @@ export const columns: ColumnDef<Teacher>[] = [
       <DataTableColumnHeader
         column={column}
         title='Type'
-        className='justify-start pl-2 text-orange-400'
+        className='hidden justify-start pl-2 text-orange-400 lg:table-cell'
       />
     ),
     cell: ({ row }) => {
       const type = row.getValue('type')
       return (
-        <div className='justify-center-center flex w-[100px] items-center'>
+        <div className='justify-center-center hidden w-[100px] items-center lg:table-cell'>
           {type === 'income' ? (
             <TrendingUp size={20} className='mr-2 text-green-500' />
           ) : (

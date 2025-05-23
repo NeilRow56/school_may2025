@@ -104,7 +104,7 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div className='container mx-auto max-w-4xl space-y-2'>
+    <div className='container mx-auto max-w-6xl space-y-2'>
       <div className='flex items-center justify-between'>
         <DataTableFilterInput table={table} column={filter_column} />
         <DataTableViewOptions table={table} />
