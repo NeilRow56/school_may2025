@@ -6,6 +6,7 @@ import {
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
+  getFacetedUniqueValues,
   getPaginationRowModel,
   getSortedRowModel,
   RowData,
@@ -33,6 +34,7 @@ import {
   DoubleArrowRightIcon
 } from '@radix-ui/react-icons'
 import DataTableFilterInput from './data-table-input-filter'
+import Filter from './data-table-column-filter'
 import { DataTableViewOptions } from './data-table-view-options'
 
 import { EmptyState } from './empty-state'
@@ -88,6 +90,7 @@ export function DataTable<TData, TValue>({
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
     getFilteredRowModel: getFilteredRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
     getPaginationRowModel: getPaginationRowModel(),
 
     rowCount: total,
@@ -104,7 +107,7 @@ export function DataTable<TData, TValue>({
   })
 
   return (
-    <div className='container mx-auto max-w-6xl space-y-2'>
+    <div className='max-w-8xl container mx-auto space-y-2'>
       <div className='flex items-center justify-between'>
         <DataTableFilterInput table={table} column={filter_column} />
         <DataTableViewOptions table={table} />
@@ -118,12 +121,24 @@ export function DataTable<TData, TValue>({
                 {headerGroup.headers.map(header => {
                   return (
                     <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
+                      <div>
+                        {header.isPlaceholder
+                          ? null
+                          : flexRender(
+                              header.column.columnDef.header,
+                              header.getContext()
+                            )}
+                      </div>
+                      {header.column.getCanFilter() ? (
+                        <div className='grid place-content-center'>
+                          <Filter
+                            column={header.column}
+                            filteredRows={table
+                              .getFilteredRowModel()
+                              .rows.map(row => row.getValue(header.column.id))}
+                          />
+                        </div>
+                      ) : null}
                     </TableHead>
                   )
                 })}
@@ -180,6 +195,15 @@ export function DataTable<TData, TValue>({
             })}
           </TableFooter>
         </Table>
+        <div className='flex w-full justify-end p-2 text-red-600'>
+          <Button
+            className='border-orange-400'
+            variant='outline'
+            onClick={() => table.resetColumnFilters()}
+          >
+            Reset Filters
+          </Button>
+        </div>
       </div>
       <div className='mt-10 flex items-center justify-between px-2'>
         <div className='text-muted-foreground flex-1 text-sm'>
@@ -212,6 +236,7 @@ export function DataTable<TData, TValue>({
             Page {table.getState().pagination.pageIndex + 1} of{' '}
             {table.getPageCount()}
           </div>
+
           <div className='flex items-center space-x-2'>
             <Button
               variant='outline'
