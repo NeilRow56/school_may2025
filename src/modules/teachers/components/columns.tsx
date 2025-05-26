@@ -6,6 +6,7 @@ import { Checkbox } from '@/components/ui/checkbox'
 import { cn } from '@/lib/utils'
 import { ColumnDef } from '@tanstack/react-table'
 import { Check, CircleOff, TrendingDown, TrendingUp } from 'lucide-react'
+import Link from 'next/link'
 
 export type Teacher = {
   id: number
@@ -99,6 +100,13 @@ export const columns: ColumnDef<Teacher>[] = [
         title='Name'
         className='justify-start pl-2 text-orange-400'
       />
+    ),
+    cell: ({ row }) => (
+      <Link href='/list/teachers/id'>
+        <div className={cn('rounded-lg p-2 capitalize')}>
+          {row.original.name}
+        </div>
+      </Link>
     )
   },
   {
